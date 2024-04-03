@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
 const apiRoutes = require('./routes/api');
-const cors = require('cors');
 const routemap = require('express-routemap');
-
 
 app.use(express.json());
 // app.use(cors)
