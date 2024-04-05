@@ -1,9 +1,9 @@
 import argparse
-import rotn
-import offset
-import aes
-import ascii
-import substitution
+import cryptographie.rotna as rotna
+import cryptographie.offseta as offseta
+import cryptographie.aesa as aesa
+import cryptographie.asciia as asciia
+import cryptographie.substitutiona as substitutiona
 
 def displayMethodError() :
     print('Error: Invalid method. Please provide a valid method (crypt or decrypt).')
@@ -23,37 +23,37 @@ args = parser.parse_args()
 # Vérification des arguments et appel des fonctions correspondantes
 if args.function == 'rotn':
     if args.method == 'crypt':
-        rotn.crypt(args.input, args.output, int(args.key), args.alphabet)
+        rotna.crypt(args.input, args.output, int(args.key), args.alphabet)
     elif args.method == 'decrypt':
-        rotn.decrypt(args.input, args.output, int(args.key), args.alphabet)
+        rotna.decrypt(args.input, args.output, int(args.key), args.alphabet)
     else:
         displayMethodError()
 elif args.function == 'offset':
     if args.method == 'crypt':
-        offset.crypt(args.input, args.output, int(args.key))
+        offseta.crypt(args.input, args.output, int(args.key))
     elif args.method == 'decrypt':
-        offset.decrypt(args.input, args.output, int(args.key))
+        offseta.decrypt(args.input, args.output, int(args.key))
     else:
         displayMethodError()
 elif args.function == 'aes':
     if args.method == 'crypt':
-        aes.crypt(args.input, args.output, args.key.encode())
+        aesa.crypt(args.input, args.output, args.key.encode())
     elif args.method == 'decrypt':
-        aes.decrypt(args.input, args.output, args.key.encode())
+        aesa.decrypt(args.input, args.output, args.key.encode())
     else:
         displayMethodError()
 elif args.function == 'ascii':
     if args.method == 'crypt':
-        ascii.crypt(args.input, args.output, int(args.key))
+        asciia.crypt(args.input, args.output, int(args.key))
     elif args.method == 'decrypt':
-        ascii.decrypt(args.input, args.output, int(args.key))
+        asciia.decrypt(args.input, args.output, int(args.key))
     else:
         displayMethodError()
 elif args.function == 'substitution':
     if args.method == 'crypt':
-        substitution.crypt(args.input, args.output, int(args.key))
+        substitutiona.crypt(args.input, args.output, int(args.key))
     elif args.method == 'decrypt':
-        substitution.decrypt(args.input, args.output, int(args.key))
+        substitutiona.decrypt(args.input, args.output, int(args.key))
     else:
         displayMethodError()
 else:
