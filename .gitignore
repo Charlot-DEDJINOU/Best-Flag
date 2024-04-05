@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#Variables d'environnemment et test data
+.env
+*.jpg
+
+#importation python
+__pycache__
