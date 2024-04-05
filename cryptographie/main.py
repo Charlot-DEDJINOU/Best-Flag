@@ -1,9 +1,9 @@
 import argparse
-import cryptographie.rotna as rotna
-import cryptographie.offseta as offseta
-import cryptographie.aesa as aesa
-import cryptographie.asciia as asciia
-import cryptographie.substitutiona as substitutiona
+import cryptographie.rotn as rotna
+import cryptographie.offset as offseta
+import cryptographie.aes as aesa
+import cryptographie.ascii as asciia
+import cryptographie.substitution as substitutiona
 
 def displayMethodError() :
     print('Error: Invalid method. Please provide a valid method (crypt or decrypt).')
