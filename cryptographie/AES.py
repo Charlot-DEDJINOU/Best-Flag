@@ -1,5 +1,5 @@
 from cryptography.fernet import Fernet
-from FileManeger import read, write
+from cryptographie.file import read, write
 
 def crypt(input_file, output_file, key) :
     cipher_suite = Fernet(key)

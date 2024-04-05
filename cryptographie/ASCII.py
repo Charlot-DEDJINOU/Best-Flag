@@ -1,4 +1,4 @@
-from FileManeger import read, write
+from cryptographie.file import read, write
 
 def crypt(input_file, output_file, key) :
     messages = read(input_file).split(chr(10))
