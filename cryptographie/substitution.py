@@ -1,4 +1,4 @@
-from cryptographie.file import read, write
+from file import read, write
 from math import floor
 
 def crypt(input_file, output_file, key) :

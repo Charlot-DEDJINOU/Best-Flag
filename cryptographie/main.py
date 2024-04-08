@@ -1,9 +1,9 @@
 import argparse
-import cryptographie.rotn as rotn
-import cryptographie.offset as offset
-import cryptographie.aes as aes
-import cryptographie.ascii as ascii
-import cryptographie.substitution as substitution
+import rotn
+import offset
+import aes
+import ascii
+import substitution
 
 def displayMethodError() :
     print('Error: Invalid method. Please provide a valid method (crypt or decrypt).')
@@ -21,39 +21,39 @@ parser.add_argument('-m', '--method', type=str, help='Method to use (crypt or de
 args = parser.parse_args()
 
 # Vérification des arguments et appel des fonctions correspondantes
-if args.function == 'rotn':
+if args.function.lower() == 'rotn':
     if args.method == 'crypt':
         rotn.crypt(args.input, args.output, int(args.key), args.alphabet)
     elif args.method == 'decrypt':
         rotn.decrypt(args.input, args.output, int(args.key), args.alphabet)
     else:
         displayMethodError()
-elif args.function == 'offset':
+elif args.function.lower() == 'offset':
     if args.method == 'crypt':
         offset.crypt(args.input, args.output, int(args.key))
     elif args.method == 'decrypt':
         offset.decrypt(args.input, args.output, int(args.key))
     else:
         displayMethodError()
-elif args.function == 'aes':
+elif args.function.lower() == 'aes':
     if args.method == 'crypt':
         aes.crypt(args.input, args.output, args.key.encode())
     elif args.method == 'decrypt':
         aes.decrypt(args.input, args.output, args.key.encode())
     else:
         displayMethodError()
-elif args.function == 'ascii':
+elif args.function.lower() == 'ascii':
     if args.method == 'crypt':
         ascii.crypt(args.input, args.output, int(args.key))
     elif args.method == 'decrypt':
         ascii.decrypt(args.input, args.output, int(args.key))
     else:
         displayMethodError()
-elif args.function == 'substitution':
+elif args.function.lower() == 'substitution':
     if args.method == 'crypt':
-        substitution.crypt(args.input, args.output, int(args.key))
+        substitution.crypt(args.input, args.output, args.key)
     elif args.method == 'decrypt':
-        substitution.decrypt(args.input, args.output, int(args.key))
+        substitution.decrypt(args.input, args.output, args.key)
     else:
         displayMethodError()
 else:

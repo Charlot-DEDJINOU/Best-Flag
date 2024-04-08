@@ -1,5 +1,5 @@
 import unicodedata
-from cryptographie.file import write, read
+from file import write, read
 
 def crypt(input_file, output_file, key, alphabet) : 
     messages = read(input_file).split(chr(10))
