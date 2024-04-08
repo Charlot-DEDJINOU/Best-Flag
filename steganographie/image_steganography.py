@@ -1,4 +1,4 @@
-from steganographie.file import read, write
+from file import read, write
 from PIL import Image
 
 def hide_image(image_to_hide_path, host_image_path, output_image_path):
@@ -153,3 +153,6 @@ def create_image(size, mode, data, output_file) :
     image = Image.new(mode, size)
     image.putdata(data)
     image.save(output_file)
+
+
+extract_hidden_image('./images/hidden_image.png', './images/charlot.png')
