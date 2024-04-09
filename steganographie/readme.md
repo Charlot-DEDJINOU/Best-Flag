@@ -32,22 +32,22 @@ pip install -r requirements.txt
 
 - Cacher une image dans une autre image :
   ```
-  python main.py -a hide_image -h path/to/image_to_hide.jpg -H path/to/host_image.jpg -o path/to/output_image.png
+  python main.py -a hide_image -sh path/to/image_to_hide.jpg -th path/to/host_image.jpg -o path/to/output_image.png
   ```
 
 - Extraire une image cachée d'une image hôte :
   ```
-  python main.py -a extract_hidden_image -H path/to/host_image_with_hidden_image.png -o path/to/extracted_image.jpg
+  python main.py -a extract_hidden_image -th path/to/host_image_with_hidden_image.png -o path/to/extracted_image.jpg
   ```
 
 - Cacher du texte dans une image :
   ```
-  python main.py -a hide_text -t path/to/text_to_hide.txt -H path/to/host_image.jpg -o path/to/output_image.png
+  python main.py -a hide_text -t path/to/text_to_hide.txt -th path/to/host_image.jpg -o path/to/output_image.png
   ```
 
 - Extraire du texte d'une image cachée :
   ```
-  python main.py -a extract_text -H path/to/host_image_with_hidden_text.png -o path/to/extracted_text.txt
+  python main.py -a extract_text -th path/to/host_image_with_hidden_text.png -o path/to/extracted_text.txt
   ```
 
 ...et ainsi de suite pour d'autres actions disponibles.
