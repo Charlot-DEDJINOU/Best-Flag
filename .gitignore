@@ -26,7 +26,6 @@ dist-ssr
 #Variables d'environnemment et test data
 .env
 images
-data
 
 #importation python
 __pycache__
