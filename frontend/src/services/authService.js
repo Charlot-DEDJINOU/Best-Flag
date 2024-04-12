@@ -10,7 +10,6 @@ export const login = async (credentials) => {
                 username : user.username,
                 session : user._id
             }));
-            localStorage.setItem('key', "Best friend")
         }
         return response.status ;
     } catch (error) {
@@ -28,11 +27,33 @@ export const fetchUserData = async () => {
     try {
         const response = await api.get('/user', {
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: token,
             },
         });
         return response.data;
     } catch (error) {
         throw new Error(error.response.data.message);
+    }
+};
+
+export const fetchAsciiKey = async () => {
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        throw new Error('Token non trouvé. Veuillez vous connecter.');
+    }
+
+    try {
+        const response = await api.get('/ascii', {
+            headers: {
+                Authorization: token,
+            },
+        });
+        const { key } = response.data;
+        localStorage.setItem("key", key)
+        return response.status;
+    } catch (error) {
+        localStorage.clear()
+        return error.response.status ;
     }
 };
