@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
 
+    localStorage.clear()
     const navigate = useNavigate()
 
     return(
