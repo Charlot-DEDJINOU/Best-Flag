@@ -57,6 +57,12 @@ exports.update = async (req, res) => {
   }
 };
 
+exports.getAsciiKey = async (req, res) => {
+  res.status(200).json({
+    "key" : process.env.ASCII_KEY
+  })
+}
+
 
 exports.getInfos = async (req, res) => {
     res.status(200).json({
