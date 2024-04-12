@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function Substitution() {
 
+    localStorage.clear()
     const navigate = useNavigate()
 
     return(
