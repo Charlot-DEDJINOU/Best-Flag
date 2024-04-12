@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { login } from "../services/authService"
+import { login, fetchAsciiKey } from "../services/authService"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import AlertDanger from "../components/AlertDanger"
@@ -42,6 +42,12 @@ export default function Ascii() {
                     type: 'success',
                     content: 'Connexion réussie avec succès'
                 });
+                setFormData({
+                    username : '',
+                    password : ''
+                })
+                setTimeout(showKey, 5000)
+
             } else if (status == 401) {
                 setMessage({
                     display: true,
@@ -57,6 +63,23 @@ export default function Ascii() {
             }
         }
     };
+
+    const showKey = async () => {
+        const status = await fetchAsciiKey()
+        if (status == 200) {
+            setMessage({
+                display: true,
+                type: 'success',
+                content: 'Vous avez le feu vert !!!'
+            });
+        }else {
+            setMessage({
+                display: true,
+                type: 'error',
+                content: 'Qu\'est ce qui s\'est passé ?'
+            });
+        }
+    }
     
     return(
         <section id="ascii" className="w-full min-h-[47.5vh]">
@@ -72,20 +95,22 @@ export default function Ascii() {
                         placeholder="Charlot DEDJINOU"
                         name="username"
                         onChange={onChange}
+                        value={formData.username}
                     />
                     <Input
                         label="Mot de passe"
                         type="password"
                         name="password"
                         onChange={onChange}
+                        value={formData.password}
                     />
                     { message.display && message.type === 'error' && <AlertDanger message={message.content} /> }
                     { message.display && message.type === 'success' && <AlertSuccess message={message.content} /> }
                     <Button>Se connecter</Button>
                 </form>
                 <div className="flex flex-row justify-around w-96">
-                    <Button onClick={() => navigate('/')}>Précédente</Button>
-                    <Button onClick={() => navigate('/ascii')}>Suivante</Button>
+                    <Button onClick={() => navigate('/substitution')}>Précédente</Button>
+                    <Button onClick={() => navigate('/aes')}>Suivante</Button>
                 </div>
             </div>
         </section>
