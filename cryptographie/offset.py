@@ -3,7 +3,7 @@ from file import read, write
 def crypt(input_file, output_file, key):
     messages = read(input_file).split(chr(10))
     content = list()
-
+    key = getKey(key)
     for message in messages :
         content.append(crypting(' '.join([crypting(c, key) for c in message.split()]), key))
     
@@ -13,7 +13,7 @@ def crypt(input_file, output_file, key):
 def decrypt(input_file, output_file, key):
     messages = read(input_file).split(chr(10))
     content = list()
-
+    key = getKey(key)
     for message in messages :
         content.append(' '.join([decrypting(c, key) for c in decrypting(message, key).split()]))
 
@@ -53,3 +53,18 @@ def decrypting(s, key) :
         return ''.join(res)
     else :
         return s
+    
+def getKey(s) :
+    num = 0
+    dem = 0
+    for (index, item) in enumerate(s) :
+        if item.isdigit() :
+            num += int(item) + index
+            dem += int(item)
+        else :
+            num += ord(item) + index
+            dem += index * 2
+
+    return int((num//dem) ** 0.5)
+
+print(getKey("Nerys 68460773"))

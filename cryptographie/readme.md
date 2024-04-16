@@ -19,16 +19,12 @@ pip install -r requirements.txt
    - Valeurs possibles : "crypt", "decrypt".
 
 3. `-u` ou `--input`: Nom du fichier d'entrée.
-   - Exemple de valeur : "input.txt".
 
 4. `-o` ou `--output`: Nom du fichier de sortie.
-   - Exemple de valeur : "output.txt".
 
 5. `-k` ou `--key`: Clé de chiffrement/déchiffrement.
-   - Exemple de valeur : "7" (pour ROTN), "3" (pour Offset), clé AES en bytes, etc.
 
 6. `-a` ou `--alphabet`: Alphabet personnalisé pour la substitution.
-   - Exemple de valeur : "azertyuiopqsdfghjklmwxcvbn".
 
 ## Exemples d'utilisation
 
