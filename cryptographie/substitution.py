@@ -19,6 +19,7 @@ def decrypt(input_file, output_file, key) :
     messages = read(input_file).split(chr(10))
     content = list()
     key = getKey(key)
+   
     for message in messages :
         deshiffer = ' '.join([str(len(c)) for c in message.split(chr(key))[:-1]])
         content.append(deshiffer)
