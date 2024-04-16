@@ -30,9 +30,9 @@ if args.function.lower() == 'rotn':
         displayMethodError()
 elif args.function.lower() == 'offset':
     if args.method == 'crypt':
-        offset.crypt(args.input, args.output, int(args.key))
+        offset.crypt(args.input, args.output, args.key)
     elif args.method == 'decrypt':
-        offset.decrypt(args.input, args.output, int(args.key))
+        offset.decrypt(args.input, args.output, args.key)
     else:
         displayMethodError()
 elif args.function.lower() == 'aes':
@@ -44,9 +44,9 @@ elif args.function.lower() == 'aes':
         displayMethodError()
 elif args.function.lower() == 'ascii':
     if args.method == 'crypt':
-        ascii.crypt(args.input, args.output, int(args.key))
+        ascii.crypt(args.input, args.output, args.key)
     elif args.method == 'decrypt':
-        ascii.decrypt(args.input, args.output, int(args.key))
+        ascii.decrypt(args.input, args.output, args.key)
     else:
         displayMethodError()
 elif args.function.lower() == 'substitution':
