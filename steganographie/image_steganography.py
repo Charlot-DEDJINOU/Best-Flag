@@ -65,6 +65,7 @@ def extract_hidden_image(host_image_path, output_image_path):
         blue = int(hidden_image_data[i + 16 : i + 24], 2)
         hidden_image_pixels.append((red, green, blue))
 
+
     create_image((hidden_image_width, hidden_image_height), 'RGB', hidden_image_pixels, output_image_path)
 
     print(f"Image cachée extraite et enregistrée dans '{output_image_path}'.")

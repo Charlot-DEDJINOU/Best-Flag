@@ -66,5 +66,3 @@ def extracted_last_bits(host_pixels) :
         extracted_bits.extend([red, green, blue])
 
     return extracted_bits
-
-image_from_pixels('pixels.txt', 'retraite.png', (500,500))
