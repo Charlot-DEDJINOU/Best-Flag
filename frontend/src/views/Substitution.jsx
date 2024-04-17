@@ -1,9 +1,10 @@
 import Button from "../components/Button"
 import { useNavigate } from 'react-router-dom'
+import image from '../assets/doll.png'
+import { downloadImage } from "../utils/utils"
 
 export default function Substitution() {
 
-    localStorage.clear()
     const navigate = useNavigate()
 
     return(
@@ -20,7 +21,7 @@ export default function Substitution() {
                     raisons de sécurité, de confidentialité, mais aussi dans le domaine artistique pour créer des œuvres visuellement intéressantes avec des couches de significations cachées.
                 </p>
                 <p className="my-5">
-                    Vous en avez suffisamment sur le thème en question. Maintenant passons à la pratique. Pouvez-vous extraire les informations utiles de cette image <span className="text-[#A52A2A] hover:cursor-pointer">doll.png</span> ?
+                    Vous en avez suffisamment sur le thème en question. Maintenant passons à la pratique. Pouvez-vous extraire les informations utiles de cette image <span onClick={() => downloadImage('doll.png', image)} className="text-[#A52A2A] hover:cursor-pointer">doll.png</span> ?
                 </p>
                 <div className="flex flex-row justify-around w-96">
                     <Button onClick={() => navigate('/')}>Précédente</Button>

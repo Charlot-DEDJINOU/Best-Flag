@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom"
 import Button from "../components/Button"
 import DevinettesData from "../data/DevinettesData"
 import { Redirect } from "../utils/utils"
+import Cookies from 'js-cookie';
 
 export default function Aes() {
 
-    localStorage.clear()
     const navigate = useNavigate()
 
     return(
@@ -28,7 +28,14 @@ export default function Aes() {
                 </p>
                 <div className="flex flex-row justify-around w-96">
                     <Button onClick={() => navigate('/ascii')}>Précédente</Button>
-                    <Button onClick={() => navigate('/rotn')}>Suivante</Button>
+                    <Button onClick={() => 
+                        {   
+                            localStorage.removeItem('key')
+                            if(localStorage.getItem('admin') === null) localStorage.setItem('admin', '128')
+                            if(Cookies.get('admin') === undefined) Cookies.set('admin', '0', { expires: 5 });
+                            navigate('/offset')
+                        }}
+                    >Suivante</Button>
                 </div>
             </div>
         </section>
