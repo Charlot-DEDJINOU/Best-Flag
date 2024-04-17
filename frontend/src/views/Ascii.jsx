@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
-import { login, fetchAsciiKey } from "../services/authService"
+import { login } from "../services/authService"
+import { fetchAsciiKey } from "../services/cryptService"
 import Button from "../components/Button"
 import Input from "../components/Input"
 import AlertDanger from "../components/AlertDanger"
@@ -88,7 +89,7 @@ export default function Ascii() {
                 <p className="mb-3">
                     La clé que vous trouverez à cette étape est pour l'algorithme ascii. Et si on commençait par <b className="text-[#A52A2A]">se connecter</b> ?
                 </p>
-                <form className="w-80 lg:w-3/4" onSubmit={onSubmit}>
+                <form className="w-[90%]" onSubmit={onSubmit}>
                     <Input
                         label="Nom d'utilisateur"
                         type="text"

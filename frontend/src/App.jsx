@@ -7,6 +7,9 @@ import Home from "./views/Home"
 import Substitution from "./views/Substitution"
 import Ascii from "./views/Ascii"
 import Aes from "./views/Aes"
+import Offset from "./views/Offset"
+import Rotn from "./views/Rotn"
+import NotFound from "./views/NotFound"
 
 function App() {
 
@@ -20,6 +23,9 @@ function App() {
                   <Route path="/substitution" element={ <Substitution /> } />
                   <Route path="/ascii" element={ <Ascii /> } />
                   <Route path="/aes" element={ <Aes /> } />
+                  <Route path="/offset" element={ <Offset /> } />
+                  <Route path="/rotn" element={ <Rotn />} />
+                  <Route path="*" element={ <NotFound /> } />
               </Routes>
               <Footer />
             </UserProvider>
