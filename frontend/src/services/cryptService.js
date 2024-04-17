@@ -12,7 +12,7 @@ export const fetchAsciiKey = async () => {
             },
         });
         const { key } = response.data;
-        localStorage.setItem("key", key)
+        localStorage.setItem("key", key.slice(1, -1))
         return response.status;
     } catch (error) {
         localStorage.clear()

@@ -1,6 +1,7 @@
 import api from './api';
 
 export const login = async (credentials) => {
+    console.log(import.meta.env.VITE_APP_API_URL)
     try {
         const response = await api.post('/login', credentials);
         if(response.status == 200) {
