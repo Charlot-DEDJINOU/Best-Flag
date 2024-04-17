@@ -38,48 +38,18 @@ exports.login = async (req, res) => {
 exports.update = async (req, res) => {
   try {
       const { id } = req.params; 
-      const { username, password, admin } = req.body;
+      const { admin } = req.body;
 
       const user = await User.findById(id);
       if (!user) {
-          return res.status(404).json({ message: 'User not found' });
+          return res.status(404).json({ message: 'User not found.' });
       }
 
-      user.username = username;
       user.admin = admin;
-      user.password = await bcrypt.hash(password, 10);
-
       await user.save();
 
       res.status(200).json({ message: 'User updated successfully', user });
   } catch (error) {
       res.status(500).json({ error: error.message });
   }
-};
-
-exports.getAsciiKey = async (req, res) => {
-  res.status(200).json({
-    "key" : process.env.ASCII_KEY
-  })
-}
-
-
-exports.getInfos = async (req, res) => {
-    res.status(200).json({
-      "/login" : "Route pour la connexion",
-      "/aqwzsedcvfrtgbnhyujkiolmp" : "Route pour la creation de compte"
-    })
-}
-
-exports.getMoreInfos = async (req, res) => {
-  res.status(200).json({
-      "/login": "Route pour la connexion",
-      [process.env.REGISTER_ROUTE]: "Route pour la création de compte",
-      [process.env.UPDATE_ROUTE]: "Route pour la mise à jour d'un utilisateur",
-      "Exemple Objet user": {
-          username: "Charlot DEDJINOU",
-          password: "Nerys@apzoeiruty#2004@04#25",
-          admin : false
-      }
-  });
 };
