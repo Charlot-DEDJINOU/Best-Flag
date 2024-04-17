@@ -66,5 +66,3 @@ def getKey(s) :
             dem += index * 2
 
     return int((num//dem) ** 0.5)
-
-print(getKey("Nerys 68460773"))
