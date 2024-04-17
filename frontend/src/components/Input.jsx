@@ -3,7 +3,7 @@ import React from 'react';
 export default function Input ({ label, type, name, value, placeholder, onChange }) {
   return (
     <div className='w-full mb-3 flex flex-col'>
-        <label className='mb-1'>{label}</label>
+        <label className='mb-1'>{label}<span className='text-[#A52A2A]'>*</span></label>
         <input
             name={name}
             type={type}
