@@ -20,6 +20,8 @@ export default function Ascii() {
         content : ''
     })
 
+    const [loading, setLoading] = useState(false)
+
     const onChange = (e) => {
         setFormData({
             ...formData,
@@ -36,7 +38,9 @@ export default function Ascii() {
                 content: 'Veuillez remplir tous les champs'
             });
         } else {
+            setLoading(true)
             const status = await login(formData);
+            setLoading(false)
             if (status == 200) {
                 setMessage({
                     display: true,
@@ -107,7 +111,7 @@ export default function Ascii() {
                     />
                     { message.display && message.type === 'error' && <AlertDanger message={message.content} /> }
                     { message.display && message.type === 'success' && <AlertSuccess message={message.content} /> }
-                    <Button>Se connecter</Button>
+                    <Button className='mb-5' isLoading={loading}>Se connecter</Button>
                 </form>
                 <div className="flex flex-row justify-around w-96">
                     <Button onClick={() => navigate('/substitution')}>Précédente</Button>

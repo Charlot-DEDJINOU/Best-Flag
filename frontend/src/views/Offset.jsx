@@ -16,8 +16,12 @@ export default function Offset() {
         content : ""
     })
 
+    const [loading, setLoading] = useState(false)
+
     const offset = async () => {
+        setLoading(true)
         const response = await getAuthorization()
+        setLoading(false)
        
         if(response.authorization) {
             setMessage({
@@ -48,7 +52,7 @@ export default function Offset() {
                 </p>
                 <div className="w-full min-h-[100px] my-5 flex-wrap flex justify-between">
                     <div>
-                        <Button className='flex flex-row items-center mb-5' onClick={offset}>
+                        <Button className='flex flex-row items-center mb-5' onClick={offset} isLoading={loading}>
                             <ReloadIcon /> 
                             <span className="block mx-2">Recharger</span>
                         </Button>
