@@ -30,5 +30,4 @@ Best Flag est un projet passionnant qui mettra vos compétences en cryptographie
 
 Nous vous souhaitons bonne chance dans votre quête pour découvrir le message secret. Amusez-vous bien et n'oubliez pas : parfois, ce qui est évident ne l'est pas toujours !
 
-## Auteur : 
-[Charlot DEDJINOU](https://charlot-dedjinou.vercel.app)
+**Auteur** : [Charlot DEDJINOU](https://charlot-dedjinou.vercel.app)
