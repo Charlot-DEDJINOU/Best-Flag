@@ -24,7 +24,7 @@ export const getAuthorization = async () => {
 
     const token = localStorage.getItem('token');
     const data = {
-        id : JSON.parse(localStorage.getItem('user')).session,
+        id : JSON.parse(localStorage.getItem('user'))?.session ,
         key1 : localStorage.getItem('admin'),
         key2 : Cookies.get('admin')
     }
