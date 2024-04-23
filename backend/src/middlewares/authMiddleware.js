@@ -5,7 +5,7 @@ const authMiddleware = (req, res, next) => {
   if (!token) {
     return res.status(401).json({ message: 'Unauthorized' });
   }
-  jwt.verify(token, 'secretKey', (error, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY , (error, decoded) => {
     if (error) {
       return res.status(401).json({ message: 'Token expired or invalid' });
     }
