@@ -44,7 +44,7 @@ export default function Offset() {
     useEffect(() => { offset(); }, []);
 
     return(
-        <section id="offset" className="w-full min-h-[47.5vh]">
+        <section id="offset" className="w-full">
             <div className="container m-auto flex flex-col items-center text-justify px-4">
                 <p className="text-2xl font-medium mb-5">Algorithme OFFSET</p>
                 <p className="mb-3">
