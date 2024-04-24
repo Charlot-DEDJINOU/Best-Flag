@@ -12,24 +12,27 @@ import Rotn from "./views/Rotn"
 import NotFound from "./views/NotFound"
 
 function App() {
-
   return (
     <React.StrictMode>
-        <Router>
-            <UserProvider>
-              <Header />
+      <Router>
+        <UserProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
               <Routes>
-                  <Route path="/" element={ <Home /> } />
-                  <Route path="/substitution" element={ <Substitution /> } />
-                  <Route path="/ascii" element={ <Ascii /> } />
-                  <Route path="/aes" element={ <Aes /> } />
-                  <Route path="/offset" element={ <Offset /> } />
-                  <Route path="/rotn" element={ <Rotn />} />
-                  <Route path="*" element={ <NotFound /> } />
+                <Route path="/" element={<Home />} />
+                <Route path="/substitution" element={<Substitution />} />
+                <Route path="/ascii" element={<Ascii />} />
+                <Route path="/aes" element={<Aes />} />
+                <Route path="/offset" element={<Offset />} />
+                <Route path="/rotn" element={<Rotn />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
-              <Footer />
-            </UserProvider>
-        </Router>
+            </main>
+            <Footer />
+          </div>
+        </UserProvider>
+      </Router>
     </React.StrictMode>
   )
 }
