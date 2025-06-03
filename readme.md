@@ -26,6 +26,12 @@ Best Flag est un projet passionnant qui mettra vos compétences en cryptographie
 - Assurez-vous d'avoir accès à tous les scripts et ressources nécessaires avant de commencer.
 - N'hésitez pas à consulter le README régulièrement pour toute mise à jour ou instruction supplémentaire.
 
+## Conseils utiles
+
+- Fouillez les fichiers, images, ou toute ressource associée pour trouver des indices (stéganographie, forensic, web hacking).
+- Soyez méthodiques : le déchiffrement doit être fait dans le bon ordre avec les bonnes clés.
+- La patience et la curiosité sont vos meilleures armes !
+
 ## Bonne Chance !
 
 Nous vous souhaitons bonne chance dans votre quête pour découvrir le message secret. Amusez-vous bien et n'oubliez pas : parfois, ce qui est évident ne l'est pas toujours !

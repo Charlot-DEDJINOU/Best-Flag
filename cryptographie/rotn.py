@@ -1,21 +1,24 @@
 from file import write, read
+from utils import getPaddings
 
-def crypt(input_file, output_file, key, alphabet) : 
+def crypt(input_file, output_file, key, salt, info, alphabet) : 
     messages = read(input_file).split(chr(10))
     content = list()
+    paddings = getPaddings(key, salt, info)
 
     for (index,message) in enumerate(messages) :
-        content.append(crypting(message, alphabet, key + index + 1))
+        content.append(crypting(message, alphabet, int(paddings[index % len(paddings)], 16)))
 
     write(output_file, chr(10).join(content))
 
 
-def decrypt(input_file, output_file, key, alphabet) :
+def decrypt(input_file, output_file, key, salt, info, alphabet) :
     messages = read(input_file).split(chr(10))
     content = list()
-
+    paddings = getPaddings(key, salt, info)
+    
     for (index,message) in enumerate(messages) :
-        content.append(decrypting(message, alphabet, key + index + 1))
+        content.append(decrypting(message, alphabet, int(paddings[index % len(paddings)], 16)))
 
     write(output_file, chr(10).join(content))
 

@@ -1,31 +1,42 @@
 from file import read, write
-from math import floor
+from utils import getPaddings
 
-def crypt(input_file, output_file, key) :
+def crypt(input_file, output_file, key, salt, info):
     messages = read(input_file).split(chr(10))
     content = list()
-    key = getKey(key)
-    for message in messages :
-        shiffer = ' '.join([str(ord(c) + key) for c in message])
-        content.append(shiffer)
+    paddings = getPaddings(key, salt, info)
+    index = 0
+
+    for message in messages:
+        encrypted_chars = []
+        
+        for c in message:
+            offset = int(paddings[index], 16)
+            encrypted_chars.append(str(ord(c) + offset))
+            index += 1
+            if index == len(paddings):
+                index = 0
+        
+        content.append(' '.join(encrypted_chars))
 
     write(output_file, chr(10).join(content))
     
-def decrypt(input_file, output_file, key) :
+def decrypt(input_file, output_file, key, salt, info):
     messages = read(input_file).split(chr(10))
     content = list()
-    key = getKey(key)
+    paddings = getPaddings(key, salt, info)
+    index = 0
+    
     for message in messages:
-        deshiffer = ''.join([chr(int(c) - key) for c in message.split()])
-        content.append(deshiffer)
+        decrypted_chars = []
+        
+        for encrypted_value in message.split():
+            offset = int(paddings[index], 16)
+            decrypted_chars.append(chr(int(encrypted_value) - offset))
+            index += 1
+            if index == len(paddings):
+                index = 0
+        
+        content.append(''.join(decrypted_chars))
 
     write(output_file, chr(10).join(content))
-
-def getKey(s) :
-    num = 0
-    dem = 0
-    for (index, item) in enumerate(s) :
-        num += ord(item) + index
-        dem += index * 2
-
-    return floor(num/dem) + 1

@@ -14,8 +14,10 @@ parser.add_argument('-f', '--function', type=str, help='Name of the function to 
 parser.add_argument('-u', '--input', type=str, help='Input file name')
 parser.add_argument('-o', '--output', type=str, help='Output file name')
 parser.add_argument('-k', '--key', type=str, help='Key for encryption/decryption')
-parser.add_argument('-a', '--alphabet', type=str, help='Alphabet for substitution cipher')
+parser.add_argument('-a', '--alphabet', type=str, help='Alphabet for encryption/decryption')
 parser.add_argument('-m', '--method', type=str, help='Method to use (crypt or decrypt)')
+parser.add_argument('-s', '--salt', type=str, help='Salt for encryption/decryption')
+parser.add_argument('-i', '--info', type=str, help='Info for encryption/decryption')
 
 # Parsing des arguments fournis par l'utilisateur
 args = parser.parse_args()
@@ -51,9 +53,9 @@ elif args.function.lower() == 'ascii':
         displayMethodError()
 elif args.function.lower() == 'substitution':
     if args.method == 'crypt':
-        substitution.crypt(args.input, args.output, args.key)
+        substitution.crypt(args.input, args.output, args.key, args.salt.encode(), args.info.encode())
     elif args.method == 'decrypt':
-        substitution.decrypt(args.input, args.output, args.key)
+        substitution.decrypt(args.input, args.output, args.key, args.salt.encode(), args.info.encode())
     else:
         displayMethodError()
 else:
