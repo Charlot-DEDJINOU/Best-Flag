@@ -5,8 +5,8 @@ from file import read, write
 
 def hide_image(image_to_hide_path, host_image_path, output_image_path):
    
-    image_to_hide = Image.open(image_to_hide_path)
-    host_image = Image.open(host_image_path)
+    image_to_hide = Image.open(image_to_hide_path).convert("RGB")
+    host_image = Image.open(host_image_path).convert("RGB")
 
     width_binary = format(image_to_hide.width, '032b')
     height_binary = format(image_to_hide.height, '032b')
@@ -44,7 +44,7 @@ def hide_image(image_to_hide_path, host_image_path, output_image_path):
 
 def extract_hidden_image(host_image_path, output_image_path):
 
-    host_image = Image.open(host_image_path)
+    host_image = Image.open(host_image_path).convert("RGB")
 
     host_pixels = list(host_image.getdata())
 
@@ -54,9 +54,13 @@ def extract_hidden_image(host_image_path, output_image_path):
     metadata = extracted_data[:128]
     hidden_image_width = int(metadata[:32],2)
     hidden_image_height = int(metadata[32:64],2)
-    hidden_image_size = int(extracted_data[64:128], 2)
+    hidden_image_size = int(metadata[64:128], 2)
 
-    hidden_image_data = extracted_data[128 : 128 + hidden_image_size]
+    number_of_pixels = hidden_image_size // 24
+    hidden_image_data = extracted_data[128 : 128 + number_of_pixels * 24]
+
+    if hidden_image_width * hidden_image_height != number_of_pixels:
+        raise ValueError("Le nombre de pixels extraits ne correspond pas aux dimensions de l'image.")
 
     hidden_image_pixels = []
     for i in range(0, len(hidden_image_data), 24):
@@ -77,7 +81,7 @@ def hide_text(input_file, image_path, output_image_path):
 
     binary_data_with_metadata = metadata + binary_data
 
-    image = Image.open(image_path)
+    image = Image.open(image_path).convert("RGB")
     pixels = list(image.getdata())
 
     if len(binary_data_with_metadata) > len(pixels):
@@ -101,7 +105,7 @@ def hide_text(input_file, image_path, output_image_path):
     create_image(image.size, image.mode, encoded_pixels, output_image_path)
 
 def extract_text(image_path, output_file):
-    image = Image.open(image_path)
+    image = Image.open(image_path).convert("RGB")
     pixels = list(image.getdata())
 
     extracted_bits = extracted_last_bits(pixels)

@@ -3,7 +3,7 @@ from PIL import Image
 
 def image_to_pixel(image_path, output_file):
     
-    image = Image.open(image_path)
+    image = Image.open(image_path).convert("RGB")
 
     pixels = list(image.getdata())
 
@@ -15,7 +15,7 @@ def image_to_pixel(image_path, output_file):
 
 def image_to_bits(image_path, output_file):
    
-    image = Image.open(image_path)
+    image = Image.open(image_path).convert("RGB")
 
     binary_data = ''.join(format(pixel, '08b') for pixel in image.tobytes())
 
