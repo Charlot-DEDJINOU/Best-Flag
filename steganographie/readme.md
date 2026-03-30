@@ -58,4 +58,4 @@ Les contributions sont les bienvenues ! N'hésitez pas à soumettre des problèm
 
 ## Auteur
 
-- [Charlot DEDJINOU](https://charlot-dedjinou.vercel.app) - Développeur principal
+- [Charlot DEDJINOU](https://charlotdedjinou.com) - Développeur principal
